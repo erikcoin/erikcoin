@@ -1,0 +1,9 @@
+Building Erikcoin
+
+See doc/readme-qt.rst for instructions on building Erikcoin-Qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Erikcoin.
+
+See doc/build-*.txt for instructions on building erikcoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of Erikcoin.
