@@ -106,16 +106,29 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0xac;
-        pchMessageStart[1] = 0xc5;
-        pchMessageStart[2] = 0x39;
-        pchMessageStart[3] = 0xdc;
-        nDefaultPort = 1349;
+   //     pchMessageStart[0] = 0xac;
+   //     pchMessageStart[1] = 0xc5;
+   //     pchMessageStart[2] = 0x39;
+        pchMessageStart[0] = 0xd2;
+        pchMessageStart[1] = 0xa0;
+        pchMessageStart[2] = 0xe6;
+        pchMessageStart[3] = 0xdb;
+   
+
+
+
+
+
+   //     pchMessageStart[3] = 0xdc;
+  
+
+
+      nDefaultPort = 1349;
         nPruneAfterHeight = 100000;
 
 
 
-        genesis = CreateGenesisBlock(1485697423, 983782, 0x1e0ffff0, 1, 30 * COIN);
+        genesis = CreateGenesisBlock(1485697423, 983782, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x96e4e4c0bef179ae6c78776d38a24ff07efd26016a8e77ee697af592de22634d"));
         assert(genesis.hashMerkleRoot == uint256S("0x647d83ecab38d4af70137bff4e8cb00b923c8e839b8afd3214cfbf4383e952ef"));
@@ -130,7 +143,7 @@ public:
 
 
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,58);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,33);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,176);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
@@ -164,7 +177,7 @@ class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-        consensus.nSubsidyHalvingInterval = 840000;
+        consensus.nSubsidyHalvingInterval = 5040000;
         consensus.nMajorityEnforceBlockUpgrade = 51;
         consensus.nMajorityRejectBlockOutdated = 75;
         consensus.nMajorityWindow = 100;
@@ -201,16 +214,15 @@ public:
         nDefaultPort = 11349;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1317798646, 385270584, 0x1e0ffff0, 1, 50 * COIN);
+     genesis = CreateGenesisBlock(1485697423, 983782, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x96e4e4c0bef179ae6c78776d38a24ff07efd26016a8e77ee697af592de22634d"));
         assert(genesis.hashMerkleRoot == uint256S("0x647d83ecab38d4af70137bff4e8cb00b923c8e839b8afd3214cfbf4383e952ef"));
-
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.push_back(CDNSSeedData("erikcointools.com", "testnet-seed.erikcointools.com"));
-        vSeeds.push_back(CDNSSeedData("loshan.co.uk", "seed-b.erikcoin.loshan.co.uk", true));
+  //      vSeeds.push_back(CDNSSeedData("erikcointools.com", "testnet-seed.erikcointools.com"));
+  //      vSeeds.push_back(CDNSSeedData("loshan.co.uk", "seed-b.erikcoin.loshan.co.uk", true));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
@@ -229,11 +241,12 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 546, uint256S("0xa0fea99a6897f531600c8ae53367b126824fd6a847b2b2b73817a95b8e27e602")),
-            1365458829,
-            547,
-            576
-        };
+            (  0, uint256S("0x96e4e4c0bef179ae6c78776d38a24ff07efd26016a8e77ee697af592de22634d")),
+		1485697423, // * UNIX timestamp of last checkpoint block
+			0,   // * total number of transactions between genesis and last checkpoint
+			//   (the tx=... number in the SetBestChain debug.log lines)
+			300.0     // * estimated number of transactions per day after checkpoint
+	};
 
     }
 };
@@ -279,10 +292,10 @@ public:
         nDefaultPort = 19444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1296688602, 0, 0x207fffff, 1, 50 * COIN);
+     genesis = CreateGenesisBlock(1485697423, 983782, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"));
-        assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        assert(consensus.hashGenesisBlock == uint256S("0x96e4e4c0bef179ae6c78776d38a24ff07efd26016a8e77ee697af592de22634d"));
+        assert(genesis.hashMerkleRoot == uint256S("0x647d83ecab38d4af70137bff4e8cb00b923c8e839b8afd3214cfbf4383e952ef"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
